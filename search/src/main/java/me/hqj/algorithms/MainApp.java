@@ -19,6 +19,7 @@ public class MainApp {
         main.run(args);
         */
         //runFibonacci();
+        mergeSort();
     }
 
     public static void runFibonacci(){
@@ -34,6 +35,11 @@ public class MainApp {
 
         System.out.println(skus.stream().reduce( (str1, str2) -> str1 + "," + str2).get());
         System.out.println(skus.stream().reduce("", (str1, str2) -> str1 + "," + str2));
+    }
+
+    public static void mergeSort(){
+        int[] arr = new int[]{3,44,28,5,40,1001,23,7,9};
+        System.out.println("Merge sort" +  Arrays.stream(Sort.mergeSort(arr)).boxed().collect(Collectors.toList()));
     }
 }
 
