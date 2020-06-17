@@ -1,7 +1,15 @@
 package me.hqj.algorithms;
 
+import me.hqj.algorithms.math.Fibonacci;
+import me.hqj.algorithms.math.impl.ForkJoinFibonacci;
+import me.hqj.algorithms.math.impl.RecursiveFibonacci;
+import me.hqj.algorithms.sort.Sort;
+import me.hqj.algorithms.sort.impl.MergeSort;
+
 import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 /**
@@ -18,13 +26,15 @@ public class MainApp {
         main.addRouteBuilder(new MyRouteBuilder());
         main.run(args);
         */
-        //runFibonacci();
+        fibonacciSeq(10);
         mergeSort();
     }
 
-    public static void runFibonacci(){
-        System.out.println("Fibonacci 5 :" + Fibonacci.getNumber(5));
-        System.out.println("Fibonacci sequence :" +  Arrays.stream(Fibonacci.getSequence(50)).boxed().collect(Collectors.toList()));
+    public static void fibonacciSeq(int length){
+        Fibonacci fibonacci = new RecursiveFibonacci();
+        System.out.println("RecursiveFibonacci sequence :" +  Arrays.stream(fibonacci.getSequence(length)).boxed().collect(Collectors.toList()));
+        fibonacci = new ForkJoinFibonacci();
+        System.out.println("ForkJoinFibonacci sequence :" +  Arrays.stream(fibonacci.getSequence(length)).boxed().collect(Collectors.toList()));
     }
 
     public static void runCoins(){
@@ -38,8 +48,17 @@ public class MainApp {
     }
 
     public static void mergeSort(){
+        Sort mergeSort = new MergeSort();
         int[] arr = new int[]{3,44,28,5,40,1001,23,7,9};
-        System.out.println("Merge sort" +  Arrays.stream(Sort.mergeSort(arr)).boxed().collect(Collectors.toList()));
+        System.out.println("Merge sort" +  Arrays.stream(mergeSort.sort(arr)).boxed().collect(Collectors.toList()));
+    }
+
+    private static void otherTests(){
+        Pattern priceRangePattern = Pattern.compile("max=(\\d+)\\$min=(\\d+)");
+        Matcher matcher =priceRangePattern.matcher("max=20$min=10");
+        if(matcher.find()){
+            System.out.println(matcher.group(1)+"-"+matcher.group(2));
+        }
     }
 }
 
