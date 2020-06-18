@@ -4,7 +4,8 @@ import me.hqj.algorithms.math.Fibonacci;
 import me.hqj.algorithms.math.impl.ForkJoinFibonacci;
 import me.hqj.algorithms.math.impl.RecursiveFibonacci;
 import me.hqj.algorithms.sort.Sort;
-import me.hqj.algorithms.sort.impl.MergeSort;
+import me.hqj.algorithms.sort.impl.ForkJoinMergeSort;
+import me.hqj.algorithms.sort.impl.RecursiveMergeSort;
 
 import java.util.Arrays;
 import java.util.List;
@@ -26,8 +27,9 @@ public class MainApp {
         main.addRouteBuilder(new MyRouteBuilder());
         main.run(args);
         */
-        fibonacciSeq(10);
+        //fibonacciSeq(10);
         mergeSort();
+
     }
 
     public static void fibonacciSeq(int length){
@@ -48,8 +50,11 @@ public class MainApp {
     }
 
     public static void mergeSort(){
-        Sort mergeSort = new MergeSort();
+        Sort mergeSort = new RecursiveMergeSort();
         int[] arr = new int[]{3,44,28,5,40,1001,23,7,9};
+        System.out.println("Merge sort" +  Arrays.stream(mergeSort.sort(arr)).boxed().collect(Collectors.toList()));
+
+        mergeSort = new ForkJoinMergeSort();
         System.out.println("Merge sort" +  Arrays.stream(mergeSort.sort(arr)).boxed().collect(Collectors.toList()));
     }
 

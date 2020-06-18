@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
  * @date: 2020-06-08 18:35
  * @version: 1.0
  */
-public class MergeSort implements Sort {
+public class RecursiveMergeSort implements Sort {
 
     @Override
     public int[] sort(int[] arr) {
@@ -38,7 +38,7 @@ public class MergeSort implements Sort {
        return merge(mergeSort(left), mergeSort(right));
     }
 
-    private int[] merge(int[] left, int[] right){
+    public static int[] merge(int[] left, int[] right){
         List<Integer> list = new ArrayList();
         int lIndex = 0, rIndex = 0;
         while(lIndex < left.length &&  rIndex < right.length){

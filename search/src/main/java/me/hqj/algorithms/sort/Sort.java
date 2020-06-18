@@ -9,4 +9,6 @@ package me.hqj.algorithms.sort;
 public interface Sort {
 
     int[] sort(int[] arr);
+
+
 }
