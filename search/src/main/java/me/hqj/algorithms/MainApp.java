@@ -5,6 +5,7 @@ import me.hqj.algorithms.math.impl.ForkJoinFibonacci;
 import me.hqj.algorithms.math.impl.RecursiveFibonacci;
 import me.hqj.algorithms.sort.Sort;
 import me.hqj.algorithms.sort.impl.ForkJoinMergeSort;
+import me.hqj.algorithms.sort.impl.InsertionSort;
 import me.hqj.algorithms.sort.impl.RecursiveMergeSort;
 
 import java.util.Arrays;
@@ -28,7 +29,7 @@ public class MainApp {
         main.run(args);
         */
         //fibonacciSeq(10);
-        mergeSort();
+        sort();
 
     }
 
@@ -49,13 +50,17 @@ public class MainApp {
         System.out.println(skus.stream().reduce("", (str1, str2) -> str1 + "," + str2));
     }
 
-    public static void mergeSort(){
-        Sort mergeSort = new RecursiveMergeSort();
+    public static void sort(){
+        Sort sort = new RecursiveMergeSort();
         int[] arr = new int[]{3,44,28,5,40,1001,23,7,9};
-        System.out.println("Merge sort" +  Arrays.stream(mergeSort.sort(arr)).boxed().collect(Collectors.toList()));
+        System.out.println("Merge sort" +  Arrays.stream(sort.sort(arr)).boxed().collect(Collectors.toList()));
 
-        mergeSort = new ForkJoinMergeSort();
-        System.out.println("Merge sort" +  Arrays.stream(mergeSort.sort(arr)).boxed().collect(Collectors.toList()));
+        sort = new ForkJoinMergeSort();
+        System.out.println("Merge sort" +  Arrays.stream(sort.sort(arr)).boxed().collect(Collectors.toList()));
+
+        sort = new InsertionSort();
+        System.out.println("Merge sort" +  Arrays.stream(sort.sort(arr)).boxed().collect(Collectors.toList()));
+
     }
 
     private static void otherTests(){

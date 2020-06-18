@@ -7,7 +7,7 @@ import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.RecursiveTask;
 
 /**
- * @description:
+ * @description: 归并排序
  * @author: huqijin
  * @date: 2020-06-18 01:37
  * @version: 1.0
@@ -44,7 +44,7 @@ public class ForkJoinMergeSort implements Sort {
                 int[] leftJoin = leftTask.join();
                 int[] rightJoin = rightTask.join();
 
-                return RecursiveMergeSort.merge(leftJoin, rightJoin);
+                return Sort.merge(leftJoin, rightJoin);
             }
         }
     }
