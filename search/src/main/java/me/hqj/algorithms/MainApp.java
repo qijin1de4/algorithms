@@ -4,9 +4,7 @@ import me.hqj.algorithms.math.Fibonacci;
 import me.hqj.algorithms.math.impl.ForkJoinFibonacci;
 import me.hqj.algorithms.math.impl.RecursiveFibonacci;
 import me.hqj.algorithms.sort.Sort;
-import me.hqj.algorithms.sort.impl.ForkJoinMergeSort;
-import me.hqj.algorithms.sort.impl.InsertionSort;
-import me.hqj.algorithms.sort.impl.RecursiveMergeSort;
+import me.hqj.algorithms.sort.impl.*;
 
 import java.util.Arrays;
 import java.util.List;
@@ -51,15 +49,25 @@ public class MainApp {
     }
 
     public static void sort(){
+
         Sort sort = new RecursiveMergeSort();
         int[] arr = new int[]{3,44,28,5,40,1001,23,7,9};
         System.out.println("Merge sort" +  Arrays.stream(sort.sort(arr)).boxed().collect(Collectors.toList()));
 
         sort = new ForkJoinMergeSort();
-        System.out.println("Merge sort" +  Arrays.stream(sort.sort(arr)).boxed().collect(Collectors.toList()));
+        System.out.println("ForkJoin Merge sort : " +  Arrays.stream(sort.sort(arr)).boxed().collect(Collectors.toList()));
 
         sort = new InsertionSort();
-        System.out.println("Merge sort" +  Arrays.stream(sort.sort(arr)).boxed().collect(Collectors.toList()));
+        System.out.println("Insertion sort : " +  Arrays.stream(sort.sort(arr)).boxed().collect(Collectors.toList()));
+
+        sort = new ShellSort();
+        System.out.println("Shell sort : " +  Arrays.stream(sort.sort(arr)).boxed().collect(Collectors.toList()));
+
+        ShellSort shellSort = (ShellSort) sort;
+        System.out.println("Shell sort with specified gaps : " +  Arrays.stream(shellSort.sort(arr, new int[]{1})).boxed().collect(Collectors.toList()));
+
+        sort = new QuickSort();
+        System.out.println("Quick sort : " +  Arrays.stream(sort.sort(arr)).boxed().collect(Collectors.toList()));
 
     }
 

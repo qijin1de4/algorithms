@@ -13,6 +13,12 @@ public interface Sort {
 
     int[] sort(int[] arr);
 
+    static void swap(int[] arr, int i, int j){
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+
     static int[] merge(int[] left, int[] right){
         List<Integer> list = new ArrayList();
         int lIndex = 0, rIndex = 0;
