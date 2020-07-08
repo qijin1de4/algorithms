@@ -23,12 +23,12 @@ public class QuickSort implements Sort {
             int partition = partition(arr, left, right);
             if(partition > 0){
                 quickSort(arr, left, partition);
-                quickSort(arr, partition-1, right);
+                quickSort(arr, partition, right);
             }
         }
     }
 
-    private int partition(int[] arr, int left, int right){
+    public static int partition(int[] arr, int left, int right){
         int pivot = left;
         int index = left + 1;
         for( int i = index; i < right ; i++){

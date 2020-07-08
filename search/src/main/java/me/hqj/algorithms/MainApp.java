@@ -28,7 +28,6 @@ public class MainApp {
         */
         //fibonacciSeq(10);
         sort();
-
     }
 
     public static void fibonacciSeq(int length){
@@ -68,6 +67,9 @@ public class MainApp {
 
         sort = new QuickSort();
         System.out.println("Quick sort : " +  Arrays.stream(sort.sort(arr)).boxed().collect(Collectors.toList()));
+
+        ForkJoinQuickSort forkJoinQuickSort = new ForkJoinQuickSort();
+        System.out.println("forkJoinQuickSort sort : " +  Arrays.stream(forkJoinQuickSort.sort(arr)).boxed().collect(Collectors.toList()));
 
     }
 
