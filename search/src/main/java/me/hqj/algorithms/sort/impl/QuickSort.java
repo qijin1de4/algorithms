@@ -13,7 +13,7 @@ public class QuickSort implements Sort {
     @Override
     public int[] sort(int[] arr) {
         if(ArrayUtils.isNotEmpty(arr)){
-            quickSort(arr, 0, arr.length);
+            quickSort(arr, arr.length/2, arr.length);
         }
         return arr;
     }
