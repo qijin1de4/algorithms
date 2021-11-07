@@ -12,4 +12,16 @@ public class LeetCodeTest {
         Assert.assertEquals(17, ContainerWithMostWater.maxArea(new int[] {2,3,4,5,18,17,6}));
         Assert.assertEquals(16, ContainerWithMostWater.maxArea(new int[] {4,3,2,1,4}));
     }
+
+    @Test
+    public void length2OfLongestSubstring() {
+        Assert.assertEquals(3, LengthOfLongestSubstring.lengthOfLongestSubstring("abcabcbb"));
+        Assert.assertEquals(1, LengthOfLongestSubstring.lengthOfLongestSubstring("bbbb"));
+        Assert.assertEquals(3, LengthOfLongestSubstring.lengthOfLongestSubstring("pwwkew"));
+        Assert.assertEquals(0, LengthOfLongestSubstring.lengthOfLongestSubstring(""));
+        Assert.assertEquals(1, LengthOfLongestSubstring.lengthOfLongestSubstring(" "));
+        Assert.assertEquals(2, LengthOfLongestSubstring.lengthOfLongestSubstring("au"));
+        Assert.assertEquals(6, LengthOfLongestSubstring.lengthOfLongestSubstring("avsdfag"));
+        Assert.assertEquals(1, LengthOfLongestSubstring.lengthOfLongestSubstring("111111"));
+    }
 }
