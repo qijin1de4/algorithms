@@ -24,4 +24,12 @@ public class LeetCodeTest {
         Assert.assertEquals(6, LengthOfLongestSubstring.lengthOfLongestSubstring("avsdfag"));
         Assert.assertEquals(1, LengthOfLongestSubstring.lengthOfLongestSubstring("111111"));
     }
+
+    @Test
+    public void test() {
+        String a = "a";
+        String b = new String("a");
+        System.out.println(a == b);
+        System.out.println(a.equals(b));
+    }
 }

@@ -37,15 +37,15 @@ public class ForkJoinQuickSort implements Sort {
         @Override
         protected void compute() {
             if(left > 0 && right - left > 0){
-                int partition = QuickSort.partition(arr, left, right);
-                if(partition > 0){
-                    Task leftTask = new Task(arr, left, partition);
-                    Task rightTask = new Task(arr, partition, right);
-                    leftTask.fork();
-                    rightTask.fork();
-                    leftTask.join();
-                    rightTask.join();
-                }
+//                int partition = QuickSort.partition(arr, left, right);
+//                if(partition > 0){
+//                    Task leftTask = new Task(arr, left, partition);
+//                    Task rightTask = new Task(arr, partition, right);
+//                    leftTask.fork();
+//                    rightTask.fork();
+//                    leftTask.join();
+//                    rightTask.join();
+//                }
             }
         }
     }
