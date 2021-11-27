@@ -3,7 +3,7 @@ package me.hqj.algorithms.leetcode;
 import junit.framework.Assert;
 import org.junit.Test;
 
-public class LeetCodeTest {
+public class LeetCode {
 
     @Test
     public void containerWithMostWater() {
@@ -31,5 +31,23 @@ public class LeetCodeTest {
         String b = new String("a");
         System.out.println(a == b);
         System.out.println(a.equals(b));
+    }
+
+    @Test
+    public void reverseKGroup() {
+        ListNode head = new ListNode(1);
+        ListNode curr = head;
+        int i = 2;
+        while(i < 20) {
+            curr.next = new ListNode(i);
+            curr = curr.next;
+            i++;
+        }
+        curr = ReverseKGroup.reverseKGroup(head, 10);
+//        curr = ReverseKGroup.reverseLink(head);
+        while(curr != null) {
+            System.out.print(curr.getVal()+" ");
+            curr = curr.next;
+        }
     }
 }
