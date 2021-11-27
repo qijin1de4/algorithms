@@ -1,4 +1,4 @@
-package me.hqj.algorithms.leetcode;
+package me.hqj.algorithms.leetcode.hard;
 
 public class ListNode {
     int val;

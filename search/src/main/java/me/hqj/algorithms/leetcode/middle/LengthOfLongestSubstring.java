@@ -1,9 +1,4 @@
-package me.hqj.algorithms.leetcode;
-
-import org.junit.Test;
-
-import java.util.HashSet;
-import java.util.Set;
+package me.hqj.algorithms.leetcode.middle;
 
 /**
  * 最长不重复字符串
