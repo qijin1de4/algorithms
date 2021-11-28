@@ -10,6 +10,7 @@ public class Stack<T> {
 
     public Stack(T val) {
         this.head = new SingleNode<T>(val);
+        size++;
     }
 
     public void push(T val) {
@@ -28,6 +29,10 @@ public class Stack<T> {
         head = head.getNext();
         size--;
         return temp.getVal();
+    }
+
+    public boolean isEmpty() {
+        return size == 0;
     }
 
     public int size() {

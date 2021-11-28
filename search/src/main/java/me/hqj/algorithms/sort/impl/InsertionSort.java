@@ -18,9 +18,7 @@ public class InsertionSort implements Sort {
                 while(j > 0 ){
                     int previous = j-1;
                     if(arr[j] < arr[previous]){
-                        int tmp = arr[j];
-                        arr[j] = arr[previous];
-                        arr[previous] = tmp;
+                        Sort.swap(arr, j, previous);
                     }
                     j--;
                 }

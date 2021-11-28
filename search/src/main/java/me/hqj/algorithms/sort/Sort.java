@@ -13,6 +13,12 @@ public interface Sort {
 
     int[] sort(int[] arr);
 
+    /**
+     *  交换两个数组元素的位置
+     * @param arr
+     * @param i
+     * @param j
+     */
     static void swap(int[] arr, int i, int j){
         int temp = arr[i];
         arr[i] = arr[j];
