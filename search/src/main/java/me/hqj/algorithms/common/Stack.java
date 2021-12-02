@@ -1,4 +1,4 @@
-package me.hqj.algorithms.leetcode.common;
+package me.hqj.algorithms.common;
 
 public class Stack<T> {
 
