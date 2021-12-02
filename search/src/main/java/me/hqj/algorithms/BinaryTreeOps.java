@@ -16,6 +16,28 @@ public class BinaryTreeOps {
     }
 
     /**
+     * 二叉树中序遍历
+     */
+    public static <T> void ldr(BinaryTreeNode<T> root) {
+        if(root != null) {
+            ldr(root.getLeft());
+            System.out.print(root.getData());
+            ldr(root.getRight());
+        }
+    }
+
+    /**
+     * 二叉树后序遍历
+     */
+    public static <T> void lrd(BinaryTreeNode<T> root) {
+        if(root != null) {
+            lrd(root.getLeft());
+            lrd(root.getRight());
+            System.out.print(root.getData());
+        }
+    }
+
+    /**
      * 将数组表示的完全二叉树转化为链表表示的树
      * @param arr
      * @return
@@ -28,17 +50,18 @@ public class BinaryTreeOps {
             refArr[0] = new BinaryTreeNode<>(arr[0]);
 
             for(int i = 2; i <= arr.length; i++) {
-                refArr[i-1] = new BinaryTreeNode<>(arr[i-1]);
-                int j = i/2;
-                if( i - 2*j > 0) {
-                    refArr[j-1].setRight(refArr[i-1]);
-                } else {
-                    refArr[j-1].setLeft(refArr[i-1]);
+                if(arr[i-1] != null) {
+                    refArr[i-1] = new BinaryTreeNode<>(arr[i-1]);
+                    int j = i/2;
+                    if( i - 2*j > 0) {
+                        refArr[j-1].setRight(refArr[i-1]);
+                    } else {
+                        refArr[j-1].setLeft(refArr[i-1]);
+                    }
                 }
             }
             return refArr[0];
         }
         return null;
     }
-
 }

@@ -21,13 +21,13 @@ public class ReverseKGroup {
      *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
      * }
      */
-        public static ListNode reverseKGroup(ListNode head, int k) {
+        public static <T> SingleLinkNode<T> reverseKGroup(SingleLinkNode<T> head, int k) {
 
-            ListNode result = head;
+            SingleLinkNode<T> result = head;
 
-            ListNode pre = head;
-            ListNode cur = head;
-            ListNode nex = null;
+            SingleLinkNode<T> pre = head;
+            SingleLinkNode<T> cur = head;
+            SingleLinkNode<T> nex = null;
             int count = 1;
             while(cur != null) {
                 //分段
@@ -39,7 +39,7 @@ public class ReverseKGroup {
                         head.next = nex;
                         pre = head;
                     } else {
-                        ListNode temp = pre.next;
+                        SingleLinkNode<T> temp = pre.next;
                         pre.next = reverseLink(temp);
                         temp.next = nex;
                         pre = temp;
@@ -57,25 +57,25 @@ public class ReverseKGroup {
      * @param head
      * @return
      */
-        public static ListNode reverseLink(ListNode head) {
-            if(head==null) return head;
-            ListNode cur = head;
-            ListNode pre = head;
-            ListNode nex = cur.next;
-            if(nex != null) {
-                cur = nex;
-                nex = nex.next;
-                pre.next = null; //将头节点的next指向null，防止产生环　
-            } else {
-                return head;
-            }
-            while(nex != null) {
-                cur.next = pre;
-                pre = cur;
-                cur = nex;
-                nex = nex.next;
-            }
-            cur.next = pre;
-            return cur;
+    public static <T> SingleLinkNode<T> reverseLink(SingleLinkNode<T> head) {
+        if(head==null) return head;
+        SingleLinkNode<T> cur = head;
+        SingleLinkNode<T> pre = head;
+        SingleLinkNode<T> nex = cur.next;
+        if(nex != null) {
+            cur = nex;
+            nex = nex.next;
+            pre.next = null; //将头节点的next指向null，防止产生环　
+        } else {
+            return head;
         }
+        while(nex != null) {
+            cur.next = pre;
+            pre = cur;
+            cur = nex;
+            nex = nex.next;
+        }
+        cur.next = pre;
+        return cur;
+    }
 }

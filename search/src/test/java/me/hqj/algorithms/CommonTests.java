@@ -12,6 +12,16 @@ public class CommonTests {
 
         BinaryTreeNode<Integer> root = BinaryTreeOps.arrTree2LinkedTree(fullTree);
 
+        System.out.println("先序");
+
         BinaryTreeOps.dlr(root);
+
+        System.out.println("\n中序");
+
+        BinaryTreeOps.ldr(root);
+
+        System.out.println("\n后序");
+
+        BinaryTreeOps.lrd(root);
     }
 }

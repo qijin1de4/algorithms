@@ -7,11 +7,11 @@ public class LeetCode {
 
     @Test
     public void reverseKGroup() {
-        ListNode head = new ListNode(1);
-        ListNode curr = head;
+        SingleLinkNode<Integer> head = new SingleLinkNode<>(1);
+        SingleLinkNode<Integer> curr = head;
         int i = 2;
         while(i < 20) {
-            curr.next = new ListNode(i);
+            curr.next = new SingleLinkNode<>(i);
             curr = curr.next;
             i++;
         }
