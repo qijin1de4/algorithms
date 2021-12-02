@@ -1,4 +1,4 @@
-package me.hqj.algorithms.leetcode.common;
+package me.hqj.algorithms.common;
 
 /**
  * 双向链表节点

@@ -1,6 +1,6 @@
 package me.hqj.algorithms.leetcode.easy;
 
-import me.hqj.algorithms.leetcode.common.Stack;
+import me.hqj.algorithms.common.Stack;
 
 /**
  * https://leetcode-cn.com/problems/valid-parentheses/
