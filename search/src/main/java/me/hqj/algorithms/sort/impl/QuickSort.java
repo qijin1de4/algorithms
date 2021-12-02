@@ -33,9 +33,7 @@ public class QuickSort implements Sort {
             if(arr[i] == arr[j]) {
                 i++;
             } else {
-                int temp = arr[i];
-                arr[i] = arr[j];
-                arr[j] = temp;
+                Sort.swap(arr, i, j);
             }
         }
         if(i -1 > start) quickSort(arr, start, i - 1);

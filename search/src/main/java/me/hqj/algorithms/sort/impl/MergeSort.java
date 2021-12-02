@@ -9,6 +9,9 @@ import me.hqj.algorithms.sort.Sort;
 public class MergeSort implements Sort {
     @Override
     public int[] sort(int[] arr) {
+        if(arr == null || arr.length == 0) {
+            return arr;
+        }
         mergeSort(arr, 0, arr.length -1 );
         return arr;
     }
