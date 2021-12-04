@@ -20,9 +20,11 @@ public interface Sort {
      * @param j
      */
     static void swap(int[] arr, int i, int j){
-        int temp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = temp;
+        if( i != j) {
+            int temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+        }
     }
 
     static int[] merge(int[] left, int[] right){
