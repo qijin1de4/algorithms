@@ -1,4 +1,4 @@
-package me.hqj.algorithms;
+package me.hqj.algorithms.tree;
 
 import me.hqj.algorithms.common.DoubleLinkNode;
 

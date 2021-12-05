@@ -1,6 +1,7 @@
 package me.hqj.algorithms;
 
 import me.hqj.algorithms.common.DoubleLinkNode;
+import me.hqj.algorithms.tree.BinaryTreeOps;
 import org.junit.Test;
 
 public class CommonTests {

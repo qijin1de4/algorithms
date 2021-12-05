@@ -2,6 +2,7 @@ package me.hqj.algorithms.leetcode.middle;
 
 import org.junit.Assert;
 import org.junit.Test;
+import org.junit.experimental.theories.suppliers.TestedOn;
 
 import java.util.List;
 
@@ -26,5 +27,13 @@ public class LeetCode {
             }
             System.out.println("]");
         }
+    }
+
+    @Test
+    public void lengthOfLTS() {
+        LengthOfLIS lts = new LengthOfLIS();
+        Assert.assertEquals(4, lts.lengthOfLIS(new int[]{10,9,2,5,3,7,101,18}));
+        Assert.assertEquals(4, lts.lengthOfLIS(new int[]{0,1,0,3,2,3}));
+        Assert.assertEquals(1, lts.lengthOfLIS(new int[]{7,7,7,7,7,7,7}));
     }
 }
