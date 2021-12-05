@@ -62,11 +62,9 @@ public class BinarySearch {
 
         if(arr[middle] > target) { //查找左半边
             return recursiveBinarySearch(arr, target, low, middle -1);
-        } else if(arr[middle] < target) {//查找右半边
+        } else {//查找右半边
             return recursiveBinarySearch(arr, target, middle + 1, high);
         }
-
-        return -1;
     }
 
 }

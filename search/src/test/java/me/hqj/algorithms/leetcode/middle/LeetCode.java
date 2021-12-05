@@ -36,4 +36,11 @@ public class LeetCode {
         Assert.assertEquals(4, lts.lengthOfLIS(new int[]{0,1,0,3,2,3}));
         Assert.assertEquals(1, lts.lengthOfLIS(new int[]{7,7,7,7,7,7,7}));
     }
+
+    @Test
+    public void searchRange() {
+        SearchRange sr = new SearchRange();
+        Assert.assertArrayEquals(new int[] {3,4}, sr.searchRange(new int[]{5,7,7,8,8,10}, 8));
+        Assert.assertArrayEquals(new int[] {0,0}, sr.searchRange(new int[]{1}, 1));
+    }
 }
