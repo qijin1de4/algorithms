@@ -43,4 +43,13 @@ public class LeetCode {
         Assert.assertArrayEquals(new int[] {3,4}, sr.searchRange(new int[]{5,7,7,8,8,10}, 8));
         Assert.assertArrayEquals(new int[] {0,0}, sr.searchRange(new int[]{1}, 1));
     }
+
+    @Test
+    public void lengthOfLongestSubstring() {
+        Assert.assertEquals(1, LengthOfLongestNoRepeatSubstr.lengthOfLongestSubstring("bbbb"));
+        Assert.assertEquals(3, LengthOfLongestNoRepeatSubstr.lengthOfLongestSubstring("abcabcbb"));
+        Assert.assertEquals(3, LengthOfLongestNoRepeatSubstr.lengthOfLongestSubstring("pwwkew"));
+        Assert.assertEquals(3, LengthOfLongestNoRepeatSubstr.lengthOfLongestSubstring("dvdf"));
+        Assert.assertEquals(2, LengthOfLongestNoRepeatSubstr.lengthOfLongestSubstring("abba"));
+    }
 }
