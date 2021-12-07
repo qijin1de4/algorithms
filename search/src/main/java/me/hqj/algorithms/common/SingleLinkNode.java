@@ -3,19 +3,19 @@ package me.hqj.algorithms.common;
 /**
  * 单向链表节点
  */
-public class SingleNode<T> {
+public class SingleLinkNode<T> {
 
     private T val;
 
-    private SingleNode<T> next = null;
+    private SingleLinkNode<T> next = null;
 
-    public SingleNode() {}
+    public SingleLinkNode() {}
 
-    public SingleNode(T val) {
+    public SingleLinkNode(T val) {
         this.val = val;
     }
 
-    public SingleNode(T val, SingleNode<T> next) {
+    public SingleLinkNode(T val, SingleLinkNode<T> next) {
         this.val = val;
         this.next = next;
     }
@@ -28,11 +28,11 @@ public class SingleNode<T> {
         this.val = val;
     }
 
-    public SingleNode<T> getNext() {
+    public SingleLinkNode<T> getNext() {
         return next;
     }
 
-    public void setNext(SingleNode<T> next) {
+    public void setNext(SingleLinkNode<T> next) {
         this.next = next;
     }
 }

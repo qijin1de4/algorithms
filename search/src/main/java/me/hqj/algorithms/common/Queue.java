@@ -9,14 +9,14 @@ public class Queue<T> {
 
     private int size;
 
-    private SingleNode<T> front = null;
+    private SingleLinkNode<T> front = null;
 
-    private SingleNode<T> rear = null;
+    private SingleLinkNode<T> rear = null;
 
     public Queue() {}
 
     public Queue(T val) {
-       front = new SingleNode<>(val, null);
+       front = new SingleLinkNode<>(val, null);
        rear = front;
        size++;
     }
@@ -27,7 +27,7 @@ public class Queue<T> {
      */
     public void enQueue(T val) {
        if(val != null) {
-           SingleNode<T> newNode = new SingleNode<>(val, null);
+           SingleLinkNode<T> newNode = new SingleLinkNode<>(val, null);
            if(rear != null) {
                rear.setNext(newNode);
                rear = rear.getNext();

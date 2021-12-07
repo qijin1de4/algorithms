@@ -4,19 +4,19 @@ package me.hqj.algorithms.common;
  * 二叉树节点
  * @param <T>
  */
-public class BinaryTreeNode<T> {
+public class DoubleLinkNode<T> {
 
     private T data = null;
 
-    private BinaryTreeNode<T> left = null;
+    private DoubleLinkNode<T> left = null;
 
-    private BinaryTreeNode<T> right = null;
+    private DoubleLinkNode<T> right = null;
 
-    public BinaryTreeNode(T data) {
+    public DoubleLinkNode(T data) {
         this.data = data;
     }
 
-    public BinaryTreeNode(T data, BinaryTreeNode<T> l, BinaryTreeNode<T> r) {
+    public DoubleLinkNode(T data, DoubleLinkNode<T> l, DoubleLinkNode<T> r) {
         this.data  = data;
         this.left = l;
         this.right = r;
@@ -30,19 +30,19 @@ public class BinaryTreeNode<T> {
         this.data = data;
     }
 
-    public BinaryTreeNode<T> getLeft() {
+    public DoubleLinkNode<T> getLeft() {
         return left;
     }
 
-    public void setLeft(BinaryTreeNode<T> left) {
+    public void setLeft(DoubleLinkNode<T> left) {
         this.left = left;
     }
 
-    public BinaryTreeNode<T> getRight() {
+    public DoubleLinkNode<T> getRight() {
         return right;
     }
 
-    public void setRight(BinaryTreeNode<T> right) {
+    public void setRight(DoubleLinkNode<T> right) {
         this.right = right;
     }
 }

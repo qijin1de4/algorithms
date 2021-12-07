@@ -2,6 +2,7 @@ package me.hqj.algorithms.leetcode.middle;
 
 import org.junit.Assert;
 import org.junit.Test;
+import org.junit.experimental.theories.suppliers.TestedOn;
 
 import java.util.List;
 
@@ -26,5 +27,29 @@ public class LeetCode {
             }
             System.out.println("]");
         }
+    }
+
+    @Test
+    public void lengthOfLTS() {
+        LengthOfLIS lts = new LengthOfLIS();
+        Assert.assertEquals(4, lts.lengthOfLIS(new int[]{10,9,2,5,3,7,101,18}));
+        Assert.assertEquals(4, lts.lengthOfLIS(new int[]{0,1,0,3,2,3}));
+        Assert.assertEquals(1, lts.lengthOfLIS(new int[]{7,7,7,7,7,7,7}));
+    }
+
+    @Test
+    public void searchRange() {
+        SearchRange sr = new SearchRange();
+        Assert.assertArrayEquals(new int[] {3,4}, sr.searchRange(new int[]{5,7,7,8,8,10}, 8));
+        Assert.assertArrayEquals(new int[] {0,0}, sr.searchRange(new int[]{1}, 1));
+    }
+
+    @Test
+    public void lengthOfLongestSubstring() {
+        Assert.assertEquals(1, LengthOfLongestNoRepeatSubstr.lengthOfLongestSubstring("bbbb"));
+        Assert.assertEquals(3, LengthOfLongestNoRepeatSubstr.lengthOfLongestSubstring("abcabcbb"));
+        Assert.assertEquals(3, LengthOfLongestNoRepeatSubstr.lengthOfLongestSubstring("pwwkew"));
+        Assert.assertEquals(3, LengthOfLongestNoRepeatSubstr.lengthOfLongestSubstring("dvdf"));
+        Assert.assertEquals(2, LengthOfLongestNoRepeatSubstr.lengthOfLongestSubstring("abba"));
     }
 }
