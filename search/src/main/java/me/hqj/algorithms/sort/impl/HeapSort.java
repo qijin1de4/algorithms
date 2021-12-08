@@ -1,5 +1,6 @@
 package me.hqj.algorithms.sort.impl;
 
+import me.hqj.algorithms.common.Stack;
 import me.hqj.algorithms.sort.Sort;
 
 /**
@@ -13,7 +14,8 @@ public class HeapSort implements Sort {
     public int[] sort(int[] arr) {
         if(arr != null && arr.length > 1) {
             for(int i = arr.length; i > 1; i--) {
-               maxHeap(arr, i, i);
+//               maxHeap(arr, i);
+                nonRecursiveMaxHeap(arr, i);
                Sort.swap(arr, 0, i-1);
             }
         }
@@ -24,30 +26,23 @@ public class HeapSort implements Sort {
      * 构造数组从下标0到下标n(n从1开始）的大顶堆(大顶堆是一棵根结点大于所有字节点的完全二叉树）
      * @param arr
      * @param n
-     * @param limit : 未排序的数组元素界线，构建堆不能超过这个界线
      * @return
      */
-    public int[] maxHeap(int[] arr, int n, int limit) {
-        if( n >1 && n <= arr.length) {
-            int root = n/2 -1;
-            if(n%2 == 0) { //左节点
-                if( n < limit) { // 界线之内
-                    int left = n -1;
-                    int largest = findLargest(arr, root, left, n);
-                    Sort.swap(arr, root, largest);
-                } else { // n位于未排序元素的最右侧边界
-                    int largest = findLargest(arr, root, n-1);
-                    Sort.swap(arr, root, largest);
-                }
-            } else { //右节点
-                int left = n - 2;
-                int right = n -1;
-                int largest = findLargest(arr, root, left, right);
-                Sort.swap(arr, root, largest);
+    public void maxHeap(int[] arr, int n) {
+        if(n > 1) {
+            if( n % 2 == 1) { //右子节点　
+                int left = n - 1 -1;
+                int root = (n / 2) - 1;
+                int right = n - 1;
+                Sort.swap(arr, root, findLargest(arr, root, left, right));
+                maxHeap(arr, n - 2);
+            } else { //左子节点
+                int root = ( n / 2 ) - 1;
+                int left = n - 1;
+                Sort.swap(arr, root, findLargest(arr, root, left));
+                maxHeap(arr, n - 1);
             }
-            maxHeap(arr, n - 2, limit);
         }
-        return arr;
     }
 
     /**
@@ -83,6 +78,34 @@ public class HeapSort implements Sort {
        } else {
            return j;
        }
+    }
+
+    /**
+     * 堆排序的非递归实现
+     * @param arr
+     * @param n
+     */
+    public void nonRecursiveMaxHeap(int[] arr, int n) {
+
+        Stack<Integer> stack = new Stack<>();
+        stack.push(n);
+
+        while(!stack.isEmpty()) {
+            int i = stack.pop();
+            if( i > 1) {
+                int root = (i / 2) - 1;
+                if( i % 2 == 1) { //右子节点
+                    int left = i -1 -1;
+                    int right = i - 1;
+                    Sort.swap(arr, root, findLargest(arr, root, left, right));
+                    stack.push(i - 2);
+                } else {
+                    int left = i - 1;
+                    Sort.swap(arr, root, findLargest(arr, root, left));
+                    stack.push( i - 1);
+                }
+            }
+        }
     }
 
 }
