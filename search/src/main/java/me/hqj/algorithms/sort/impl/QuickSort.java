@@ -17,7 +17,8 @@ public class QuickSort implements Sort {
     public int[] sort(int[] arr) {
         if(ArrayUtils.isNotEmpty(arr)){
 //            quickSort(arr, 0, arr.length-1);
-            nonRecursiveQuickSort(arr, 0, arr.length - 1);
+//            nonRecursiveQuickSort(arr, 0, arr.length - 1);
+            cnociseQuickSort(arr, 0, arr.length - 1);
         }
         return arr;
     }
@@ -43,6 +44,8 @@ public class QuickSort implements Sort {
         if(i - 1 > start) quickSort(arr, start, i - 1);
         if(j + 1 < end) quickSort(arr, j+1, end);
     }
+
+
 
     /**
      * 快速排序的非递归实现
@@ -82,4 +85,40 @@ public class QuickSort implements Sort {
         }
     }
 
+
+    /**
+     * partition过程中仅使用一个loop的简洁版的快速排序
+     * @param nums
+     * @param low
+     * @param high
+     */
+    private void cnociseQuickSort(int[] nums, int low, int high) {
+        if(low < high) {
+
+            int pivotIndex = partition(nums, low, high);
+
+            cnociseQuickSort(nums, low, pivotIndex - 1);
+            cnociseQuickSort(nums, pivotIndex + 1, high);
+        }
+
+    }
+
+    /**
+     * 使用单指针的分区方法
+     * @param nums
+     * @param low
+     * @param high
+     * @return
+     */
+    private int partition(int[] nums, int low, int high) {
+
+        int index = low+1;
+        for(int i = low+1; i <= high; i++) {
+            if(nums[i] < nums[low]) {
+                Sort.swap(nums, i, index++);
+            }
+        }
+        Sort.swap(nums, low, index - 1);
+        return index - 1;
+    }
 }
