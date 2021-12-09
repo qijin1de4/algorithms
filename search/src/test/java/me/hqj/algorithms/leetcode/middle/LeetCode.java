@@ -52,4 +52,25 @@ public class LeetCode {
         Assert.assertEquals(3, LengthOfLongestNoRepeatSubstr.lengthOfLongestSubstring("dvdf"));
         Assert.assertEquals(2, LengthOfLongestNoRepeatSubstr.lengthOfLongestSubstring("abba"));
     }
+
+    @Test
+    public void combineIntervals() {
+        Assert.assertArrayEquals( new int[][]{
+            {1, 6},
+            {8, 10},
+            {15, 18},
+        }, CombineIntervals.merge( new int[][]{
+                {1, 3},
+                {2, 6},
+                {8, 10},
+                {15, 18}
+        }));
+
+        Assert.assertArrayEquals( new int[][]{
+                {1, 5}
+        }, CombineIntervals.merge( new int[][]{
+                {1, 4},
+                {4, 5}
+        }));
+    }
 }
