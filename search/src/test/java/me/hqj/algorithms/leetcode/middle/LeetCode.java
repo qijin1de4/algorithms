@@ -73,4 +73,37 @@ public class LeetCode {
                 {4, 5}
         }));
     }
+
+    @Test
+    public void eraseOverlapIntervals() {
+        Assert.assertEquals(1, EraseOverlapIntervals.eraseOverlapIntervals(new int[][] {
+                {1,2},
+                {2,3},
+                {3,4},
+                {1,3}
+        }));
+        Assert.assertEquals(2, EraseOverlapIntervals.eraseOverlapIntervals(new int[][] {
+                {1,2},
+                {1,2},
+                {1,2}
+        }));
+        Assert.assertEquals(0, EraseOverlapIntervals.eraseOverlapIntervals(new int[][] {
+                {1,2},
+                {2,3},
+        }));
+        Assert.assertEquals(2, EraseOverlapIntervals.eraseOverlapIntervals(new int[][] {
+                {1,100},
+                {11,22},
+                {1,11},
+                {2,12},
+        }));
+        Assert.assertEquals(2, EraseOverlapIntervals.eraseOverlapIntervals(new int[][] {
+                {0,2},
+                {1,3},
+                {2,4},
+                {3,5},
+                {4,6}
+        }));
+        Assert.assertEquals(7, EraseOverlapIntervals.eraseOverlapIntervals(new int[][] {{-52,31},{-73,-26},{82,97},{-65,-11},{-62,-49},{95,99},{58,95},{-31,49},{66,98},{-63,2},{30,47},{-40,-26}}));
+    }
 }
