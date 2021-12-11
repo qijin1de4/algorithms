@@ -7,12 +7,22 @@ public class GraphTest {
 
     @Test
     public void graphTest() {
+
         Integer[][] matrix = {
-                {0,1,1,1},
-                {1,0,1,1},
-                {1,1,0,1},
-                {1,1,1,0}
+                {null,1,1,1},
+                {1,null,1,1},
+                {1,1,null,1},
+                {1,1,1,null}
         };
+
+        String[] nodes = new String[] {"V1", "V2", "V3", "V4"};
+
+        AdjMatrixGraph<String, Integer> matrixGraph = new AdjMatrixGraph<>(nodes, matrix);
+
+        AdjListGraph<String, Integer> listGraph = new AdjListGraph<String, Integer>(matrixGraph);
+
+        listGraph.dfs();
+
         Assert.assertEquals(0,0);
     }
 }

@@ -2,7 +2,10 @@ package me.hqj.algorithms.graph;
 
 import me.hqj.algorithms.common.SingleLinkNode;
 
-import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 /**
  * 邻接表矩阵图
@@ -14,9 +17,9 @@ public class AdjListGraph<T, R> {
      * 图的邻接矩阵
      * vertexes: 图的定点数组
      */
-    private Vertex<T,R>[] vertexes;
+    private List<Vertex<T, Edge<R>>> vertexes;
 
-    AdjListGraph(Vertex<T, R>[] vertexes) {
+    AdjListGraph(List<Vertex<T, Edge<R>>> vertexes) {
         this.vertexes = vertexes;
     }
 
@@ -24,24 +27,23 @@ public class AdjListGraph<T, R> {
      * 通过一个邻接矩阵表示的图构建邻接表表示的图
      * @param adjMatrixGraph
      */
-    @SuppressWarnings("unchecked")
     AdjListGraph(AdjMatrixGraph<T,R> adjMatrixGraph) {
         if(adjMatrixGraph != null
             && adjMatrixGraph.getNodes() != null && adjMatrixGraph.getNodes().length > 0
             && adjMatrixGraph.getEdges() != null && adjMatrixGraph.getEdges().length > 0) {
             T[] nodes = adjMatrixGraph.getNodes();
             R[][] edges = adjMatrixGraph.getEdges();
-            vertexes = (Vertex<T, R>[]) Array.newInstance(Vertex.class, nodes.length);
+            vertexes = getVertexes();
             for(int i = 0; i < nodes.length; i++) {
-                Vertex<T, R> vertex = new Vertex<>(nodes[i]);
-                vertexes[i] = vertex;
+                Vertex<T, Edge<R>> vertex = new Vertex<>(nodes[i]);
+                vertexes.add(vertex);
                 for(int j = 0; j < edges[i].length; j++) {
                     if(edges[i][j] != null) {
-                        SingleLinkNode<R> edge = getLastEdge(vertex);
+                        SingleLinkNode<Edge<R>> edge = getLastEdge(vertex);
                         if(edge == null) {
-                            vertex.setEdge(new SingleLinkNode<>(edges[i][j]));
+                            vertex.setEdge(new SingleLinkNode<>(new Edge<>(edges[i][j], j)));
                         } else {
-                            edge.setNext(new SingleLinkNode<>(edges[i][j]));
+                            edge.setNext(new SingleLinkNode<>(new Edge<>(edges[i][j], j)));
                         }
                     }
                 }
@@ -49,8 +51,8 @@ public class AdjListGraph<T, R> {
         }
     }
 
-    private SingleLinkNode<R> getLastEdge(Vertex<T,R> vertex) {
-        SingleLinkNode<R> edge = vertex.getEdge();
+    private SingleLinkNode<Edge<R>> getLastEdge(Vertex<T,Edge<R>> vertex) {
+        SingleLinkNode<Edge<R>> edge = vertex.getEdge();
         while(edge != null && edge.getNext() != null) {
             edge = edge.getNext();
         }
@@ -61,13 +63,24 @@ public class AdjListGraph<T, R> {
      * 深度优先遍历
      */
     public void dfs() {
-        for(int i = 0; i < vertexes.length; i++) {
-            Vertex<T, R> vertex = vertexes[i];
-            SingleLinkNode<R> edge = vertex.getEdge();
-            System.out.println(" ");
-            while(edge != null) {
-                System.out.print(edge.getVal() + " ");
-                edge = edge.getNext();
+
+        Set<Integer> accessed = new HashSet<>();
+
+        for(int i = 0; i < vertexes.size(); i++) {
+            if(!accessed.contains(i)) {
+                accessed.add(i);
+                Vertex<T, Edge<R>> vertex = vertexes.get(i);
+                System.out.print(vertex.getVal() + " -> ");
+                SingleLinkNode<Edge<R>> edge = vertex.getEdge();
+                while(edge != null) {
+                    int neighborVertexIndex = edge.getVal().getTo();
+                    if(!accessed.contains(neighborVertexIndex)) {
+                        accessed.add(neighborVertexIndex);
+                        Vertex<T, Edge<R>> neighborVertex = vertexes.get(neighborVertexIndex);
+                        System.out.print(neighborVertex.getVal() + " -> ");
+                        edge = edge.getNext();
+                    }
+                }
             }
         }
     }
@@ -79,11 +92,14 @@ public class AdjListGraph<T, R> {
 
     }
 
-    public Vertex<T, R>[] getVertexes() {
+    public List<Vertex<T, Edge<R>>> getVertexes() {
+        if(vertexes == null) {
+            this.vertexes = new ArrayList<>();
+        }
         return vertexes;
     }
 
-    public void setVertexes(Vertex<T, R>[] vertexes) {
+    public void setVertexes(List<Vertex<T, Edge<R>>> vertexes) {
         this.vertexes = vertexes;
     }
 }
