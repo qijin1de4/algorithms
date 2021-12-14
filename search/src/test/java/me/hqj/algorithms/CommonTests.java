@@ -41,27 +41,27 @@ public class CommonTests {
 
         Maze maze = new Maze();
 
-//        int[][] mazeArr1 = new int[][] {
-//                {0,  0,  0,  0,  0, 0},
-//                {0,  0, -1,  0,  0, 0},
-//                {0,  0, -1,  0,  0, 0},
-//                {0,  0, -1, -1,  0, 0},
-//                {0, -1,  0,  0,  0, 0},
-//                {0,  0,  0,  0,  0, 0},
-//        };
-//
-//        Assert.assertEquals(true, maze.hasPath2Exit(mazeArr1, new int[] {0, 2}, new int[] {4,2}) );
-//
-//        int[][] mazeArr2 = new int[][] {
-//                {0,  0,  0,  0,  0, 0},
-//                {0,  0, -1,  0,  0, 0},
-//                {0,  0, -1,  0,  0, 0},
-//                {0,  0, -1, -1,  0, 0},
-//                {0, -1,  0, -1,  0, 0},
-//                {0,  0, -1,  0,  0, 0},
-//        };
-//
-//        Assert.assertEquals(false, maze.hasPath2Exit(mazeArr2, new int[] {0, 2}, new int[] {4,2}) );
+        int[][] mazeArr1 = new int[][] {
+                {0,  0,  0,  0,  0, 0},
+                {0,  0, -1,  0,  0, 0},
+                {0,  0, -1,  0,  0, 0},
+                {0,  0, -1, -1,  0, 0},
+                {0, -1,  0,  0,  0, 0},
+                {0,  0,  0,  0,  0, 0},
+        };
+
+        Assert.assertEquals(true, maze.hasPath2ExitDFS(mazeArr1, new int[] {0, 2}, new int[] {4,2}) );
+
+        int[][] mazeArr2 = new int[][] {
+                {0,  0,  0,  0,  0, 0},
+                {0,  0, -1,  0,  0, 0},
+                {0,  0, -1,  0,  0, 0},
+                {0,  0, -1, -1,  0, 0},
+                {0, -1,  0, -1,  0, 0},
+                {0,  0, -1,  0,  0, 0},
+        };
+
+        Assert.assertEquals(false, maze.hasPath2ExitDFS(mazeArr2, new int[] {0, 2}, new int[] {4,2}) );
 
 
         int[][] mazeArr3 = new int[][] {
@@ -73,8 +73,12 @@ public class CommonTests {
                 {0,  0,  0,  0,  0, 0},
         };
 
-        Assert.assertEquals(true, maze.getShortestPath(mazeArr3, new int[] {0, 2}, new int[] {4,2}) );
+        Assert.assertEquals(8, maze.getShortestPath(mazeArr3, new int[] {0, 2}, new int[] {4,2}) );
 
+
+        Assert.assertEquals(true, maze.hasPath2ExitBFS(mazeArr1, new int[] {0, 2}, new int[] {4,2}) );
+
+        Assert.assertEquals(false, maze.hasPath2ExitBFS(mazeArr2, new int[] {0, 2}, new int[] {4,2}) );
     }
 
 }

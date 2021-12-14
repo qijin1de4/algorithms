@@ -1,11 +1,10 @@
 package me.hqj.algorithms;
 
 import org.apache.commons.lang3.ArrayUtils;
-import sun.tools.jstack.JStack;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedList;
 import java.util.Objects;
+import java.util.Queue;
 import java.util.Stack;
 
 /**
@@ -33,13 +32,13 @@ public class Maze {
      * @param maze
      * @return
      */
-    public boolean hasPath2Exit(int[][] maze, int[] start, int[] exit) {
+    public boolean hasPath2ExitDFS(int[][] maze, int[] start, int[] exit) {
         System.out.println();
         path.clear();
         if(maze != null && maze.length > 0
             && start != null && start.length > 0
             && exit != null && exit.length > 0) {
-            if(dfs(maze, start, exit)) {
+            if(dfs(copyArr(maze), start, exit)) {
                 while(!path.isEmpty()) {
                     int[] passed = path.pop();
                     System.out.print("[" + passed[0] + "," + passed[1] + "] ");
@@ -53,6 +52,21 @@ public class Maze {
         return false;
     }
 
+
+    /**
+     * 是否有从起点到出口的路径
+     * @param maze
+     * @return
+     */
+    public boolean hasPath2ExitBFS(int[][] maze, int[] start, int[] exit) {
+        System.out.println();
+        if(maze != null && maze.length > 0
+                && start != null && start.length > 0
+                && exit != null && exit.length > 0) {
+            return bfs(copyArr(maze), start, exit);
+        }
+        return false;
+    }
 
     /**
      * 深度遍历查找迷宫中从节点【x，y】到出口的路径
@@ -81,6 +95,36 @@ public class Maze {
     }
 
     /**
+     *  广度优先搜索
+     * @param maze
+     * @param start
+     * @param exit
+     * @return
+     */
+    private boolean bfs(int[][] maze, int[] start, int[] exit) {
+
+        Queue<int[]> queue = new LinkedList<>();
+
+        queue.add(start);
+
+        while(!queue.isEmpty()) {
+            int[] current = queue.poll();
+            for(int[] d : direction) {
+                int x = current[0] + d[0], y = current[1] + d[1];
+                int[] next = new int[] {x, y};
+                if(safeToGo(maze, x, y)) {
+                    maze[x][y] = 1;
+                    queue.add(next);
+                }
+                if(Objects.deepEquals(exit, next)) {
+                    return true;
+                }
+            }
+        }
+       return false;
+    }
+
+    /**
      * 判断坐标点 P [x,y] 是否可访问
      * 不可访问：
      * 1，P不超出了maze范围
@@ -102,16 +146,17 @@ public class Maze {
 
     /**
      * 找到抵达目标的最短路径
-     * @param maze
+     * @param mazeArr
      * @return
      */
-    public boolean getShortestPath(int[][] maze, int[] start, int[] exit) {
+    public boolean getShortestPath(int[][] mazeArr, int[] start, int[] exit) {
         System.out.println();
         path.clear();
-        if(maze != null && maze.length > 0
+        if(mazeArr != null && mazeArr.length > 0
                 && start != null && start.length > 0
                 && exit != null && exit.length > 0) {
 
+            int[][] maze = copyArr(mazeArr);
             // 处理
             for(int[] node : maze) {
                 for(int i = 0; i < node.length; i++) {
@@ -138,7 +183,7 @@ public class Maze {
      * @param exit
      * @param count
      */
-    public void findShortestPathDFS(int[][] maze, int[] start, int[] exit, int count) {
+    private void findShortestPathDFS(int[][] maze, int[] start, int[] exit, int count) {
        if(Objects.deepEquals(start, exit)) {
                    return;
        }
@@ -149,6 +194,10 @@ public class Maze {
                findShortestPathDFS(maze, tryNext, exit, count + 1);
            }
        }
+    }
+
+    private void findShortestPathBFS(int[][] maze, int[] start, int[] exit, int count) {
+
     }
 
     /**
@@ -169,5 +218,25 @@ public class Maze {
             return true;
         }
         return false;
+    }
+
+
+    /**
+     *
+     * @param arr
+     * @return
+     */
+    private int[][] copyArr(int[][] arr) {
+        if(ArrayUtils.isNotEmpty(arr)) {
+
+            int[][] copy = new int[arr.length][];
+
+            for(int i = 0; i < arr.length; i++) {
+                System.arraycopy(arr[i], 0, copy[i], 0, arr[i].length);
+            }
+
+            return copy;
+        }
+        return null;
     }
 }
